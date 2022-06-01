@@ -3,16 +3,14 @@ import { checkForUpdates } from './updater'
 import path from 'path'
 import icon from 'trayTemplate.png'
 
+let window = null
+const additionalData = { myKey: 'myValue' }
+const gotTheLock = app.requestSingleInstanceLock(additionalData)
 
-
+// Проверка обновлений
 setTimeout(() => {
   checkForUpdates()
 }, 2000)
-
-let window = null
-
-const additionalData = { myKey: 'myValue' }
-const gotTheLock = app.requestSingleInstanceLock(additionalData)
 
 // Если повторный запуск
 if (!gotTheLock) {
@@ -28,9 +26,8 @@ if (!gotTheLock) {
       window.focus()
     }
   })
-
-// При запуске приложения
-app.on('ready', () => {
+  // При запуске приложения
+  app.on('ready', () => {
  // Получаем максимальный размер окна
  // const { width, height } = screen.getPrimaryDisplay().workAreaSize
  
@@ -87,6 +84,7 @@ app.on('ready', () => {
   window.on('ready-to-show', () => {
   window.show()
   })
+
 })
 
 }
