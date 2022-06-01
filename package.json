@@ -2,8 +2,12 @@
   "name": "TodoToday",
   "version": "0.1.0",
   "description": "TodoToday - список задач на день!",
-  "author": "VitArts.ru <vitarts@ya.ru>",
-  "repository": "",
+  "author": {
+    "name" : "VitArts.ru",
+    "email": "vitarts@ya.ru"
+  },
+  "homepage": "https://todotoday.ru/",
+  "repository": "https://github.com/VitArts/TodoToday",
   "dependencies": {},
   "license": "ISC",
   "devDependencies": {
@@ -16,9 +20,11 @@
     "appId": "com.electron.tototoday",
     "copyright" : "Copyright 2022 VitArts",
     "publish" : {
-        "provider" : "github" ,
-        "private" : true
-    },
+        "provider": "github",
+        "owner": "VitArts",
+        "repo": "TodoToday",
+        "token": "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"
+      },
     "win": {
       "certificateFile": "private/MyApps.p12",
       "certificatePassword" : "MyAppsDevKey",
@@ -28,7 +34,8 @@
       "category": "public.app-category.productivity"
     },
     "linux": {
-      "category": "Utility"
+      "category": "Utility",
+      "target" : ["AppImage", "deb"]
     }
   },
   "main": "jest.config.js",
