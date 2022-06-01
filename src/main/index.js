@@ -1,6 +1,13 @@
 import { app,  BrowserWindow, Tray, Menu } from 'electron'
+import { checkForUpdates } from './updater'
 import path from 'path'
 import icon from 'trayTemplate.png'
+
+
+
+setTimeout(() => {
+  checkForUpdates()
+}, 2000)
 
 let window = null
 

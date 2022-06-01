@@ -1,6 +1,6 @@
 {
   "name": "TodoToday",
-  "version": "0.1.0",
+  "version": "0.0.9",
   "description": "TodoToday - список задач на день!",
   "author": {
     "name" : "VitArts.ru",
@@ -22,8 +22,7 @@
     "publish" : {
         "provider": "github",
         "owner": "VitArts",
-        "repo": "TodoToday",
-        "token": "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"
+        "repo": "TodoToday"
       },
     "win": {
       "certificateFile": "private/MyApps.p12",
