@@ -16,4 +16,6 @@ window.onload = () => {
     })
   })
 
+  document.querySelector('.apps-download-btn').remove()
+
 }
