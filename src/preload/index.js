@@ -1,7 +1,5 @@
 import { ipcRenderer } from 'electron'
 
-console.log('test')
-
 window.onload = () => {
 
   window.addEventListener('online', () => {
@@ -15,7 +13,5 @@ window.onload = () => {
       body: 'Проверьте соединение с интернетом'
     })
   })
-
-  document.querySelector('.apps-download-btn').remove()
 
 }

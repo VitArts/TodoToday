@@ -1,6 +1,8 @@
-import { app, BrowserWindow, Tray,	Menu} from 'electron'
+import { app, BrowserWindow, Tray,	Menu, dialog } from 'electron'
 import path from 'path'
 import icon from 'trayTemplate.png'
+import iconLarge from 'icon.png'
+
 
 export const appTodo = () => {
 	let window = null
@@ -20,6 +22,11 @@ export const appTodo = () => {
 			}
 		})
 
+		// Автозагрузка
+		app.setLoginItemSettings({
+			openAtLogin: true,
+		})
+		
 		// При запуске приложения
 		app.on('ready', () => {
 			// Получаем максимальный размер окна
@@ -27,31 +34,50 @@ export const appTodo = () => {
 
 			// Настройки для окна приложения
 			let window = new BrowserWindow({
-				width: 400,
+				width: 380,
 				maxWidth: 450,
-				minWidth: 350,
+				minWidth: 380,
 				height: 800,
+				fullscreen: false,
+				fullscreenable: false,
 				show: false,
+				// opacity: 0.95,
 				alwaysOnTop: true,
 				titleBarStyle: 'hidden',
 				titleBarOverlay: {
-					color: '#fff',
-					symbolColor: '#1a3b5d'
+					color: 'rgba(0,0,0,0)',
+					symbolColor: '#7e7e7e',
+					height: 31
 				},
-				backgroundColor: '#fff',
+				frame: false,
 				webPreferences: {
 					// nodeIntegration: false,
 					preload: path.join(app.getAppPath(), 'preload/index.js'),
 					// contextIsolation: false,
-					// enableRemoteModule: true,
+					// enableR emoteModule: true,
 				}
 			})
 
+			let aboutModal  = {
+				buttons: ["Хорошо"],
+				type: 'info',
+				icon: path.resolve(__dirname, iconLarge),
+				title: "О программе",
+				detail: 'Версия - 0.1.6\nВеб версия - TodoToday.ru\nРазработка - VitArts.ru',
+				message: "TodoToday"
+			 }
+
+			
 			// Меню для трея
 			const trayMenu = Menu.buildFromTemplate([{
 				label: 'Показать / Скрыть',
 				click: () => {
 					window.isVisible() ? window.hide() : window.show()
+				}
+			}, {
+				label: 'О программе',
+				click: () => {
+					dialog.showMessageBox(window, aboutModal)
 				}
 			}, {
 				label: 'Выход',
@@ -72,7 +98,7 @@ export const appTodo = () => {
 			});
 
 			// Загрузка из вне
-			window.loadURL('https://todotoday.ru')
+			window.loadURL('https://todotoday.ru/')
 
 			// Консоль
 			// window.webContents.openDevTools() 
