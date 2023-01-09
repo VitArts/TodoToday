@@ -1,8 +1,7 @@
-import { app, BrowserWindow, Tray,	Menu, dialog } from 'electron'
+import { app, BrowserWindow, Tray,	Menu, dialog, session } from 'electron'
 import path from 'path'
 import icon from 'trayTemplate.png'
 import iconLarge from 'icon.png'
-
 
 export const appTodo = () => {
 	let window = null
@@ -31,7 +30,7 @@ export const appTodo = () => {
 		app.on('ready', () => {
 			// Получаем максимальный размер окна
 			// const { width, height } = screen.getPrimaryDisplay().workAreaSize
-
+			session.defaultSession.clearCache()
 			// Настройки для окна приложения
 			let window = new BrowserWindow({
 				width: 380,
@@ -63,7 +62,7 @@ export const appTodo = () => {
 				type: 'info',
 				icon: path.resolve(__dirname, iconLarge),
 				title: "О программе",
-				detail: 'Версия - 0.1.6\nВеб версия - TodoToday.ru\nРазработка - VitArts.ru',
+				detail: 'Версия - 0.1.7\nВеб версия - TodoToday.ru\nРазработка - VitArts.ru',
 				message: "TodoToday"
 			 }
 
