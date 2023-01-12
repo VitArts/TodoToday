@@ -128,7 +128,7 @@ export const appTodo = () => {
 			window.loadURL('https://todotoday.ru/')
 
 			// Консоль
-		  window.webContents.openDevTools() 
+		  //window.webContents.openDevTools() 
 			window.on('ready-to-show', () => {
 				window.show()
 				window.setTitle('')
