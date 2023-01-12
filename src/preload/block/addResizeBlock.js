@@ -16,11 +16,24 @@ const addResizeBlock = () => {
 	const paramContent = document.querySelector('.content .param')
 	paramContent.after(resizeWindow)
 
-	const browserZoomLevel = window.devicePixelRatio
+	let browserZoomLevel = window.devicePixelRatio.toFixed(2)
 	const toggleSize = document.querySelector('.toggle-size')
 
+	// ретина экрана
+	switch (browserZoomLevel) {
+		case '1.90':
+			browserZoomLevel = '0.95'
+			break;
+		case '2.00':
+			browserZoomLevel = '1.00'
+			break;
+		case '2.10':
+			browserZoomLevel = '1.05'
+			break;
+	}
+
 	for (let option of toggleSize.options) {
-		if (browserZoomLevel.toFixed(2) === option.value) {
+		if (browserZoomLevel === option.value) {
 			option.selected = true
 		}
 	}

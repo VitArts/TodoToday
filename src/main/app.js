@@ -58,26 +58,28 @@ export const appTodo = () => {
 				}
 			})
 
-			// Переключаем темы
-			ipcMain.on('theme', (_, data) => {
-				if (data === 'light') {
-				//	nativeTheme.themeSource = 'light'
-					window.setTitleBarOverlay({color:'#fff'})
-				} 
-
-				if (data === 'dark') {
+			// Проверяем если не макос то переключаем темы
+			if (require('node:os').type() !== 'Darwin') {
+				ipcMain.on('theme', (_, data) => {
+					if (data === 'light') {
 					//	nativeTheme.themeSource = 'light'
-					window.setTitleBarOverlay({color:'#0f0f0f'})
-				}
-			})
-
-				// Переключаем масштаб
+						window.setTitleBarOverlay({color:'#fff'})
+					} 
+	
+					if (data === 'dark') {
+						//	nativeTheme.themeSource = 'light'
+						window.setTitleBarOverlay({color:'#0f0f0f'})
+					}
+				})
+			}
+			
+		// Переключаем масштаб
 				ipcMain.on('size', (_, data) => {
 						const num = Number(data)
 						window.webContents.setZoomFactor(num);
 				})
 
-				// Переключаем размер окна
+		// Переключаем размер окна
 				ipcMain.on('resize', (_, data) => {
 						const num = Number(data)
 						window.setContentSize(num, window.getSize()[1])
@@ -126,7 +128,7 @@ export const appTodo = () => {
 			window.loadURL('https://todotoday.ru/')
 
 			// Консоль
-		  // window.webContents.openDevTools() 
+		  window.webContents.openDevTools() 
 			window.on('ready-to-show', () => {
 				window.show()
 				window.setTitle('')
