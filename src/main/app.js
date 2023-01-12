@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Tray,	Menu, dialog, session, ipcMain, nativeTheme } from 'electron'
+import { app, BrowserWindow, Tray,	Menu, dialog, session, ipcMain } from 'electron'
 import path from 'path'
 import icon from 'trayTemplate.png'
 import iconLarge from 'icon.png'
@@ -77,6 +77,12 @@ export const appTodo = () => {
 						window.webContents.setZoomFactor(num);
 				})
 
+				// Переключаем размер окна
+				ipcMain.on('resize', (_, data) => {
+						const num = Number(data)
+						window.setContentSize(num, window.getSize()[1])
+				})
+
 			// Окно о программе
 			let aboutModal  = {
 				buttons: ["Хорошо"],
@@ -120,7 +126,7 @@ export const appTodo = () => {
 			window.loadURL('https://todotoday.ru/')
 
 			// Консоль
-			// window.webContents.openDevTools() 
+		  // window.webContents.openDevTools() 
 			window.on('ready-to-show', () => {
 				window.show()
 				window.setTitle('')

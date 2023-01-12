@@ -73,6 +73,20 @@ window.onload = () => {
   checkHeightTitleBar()
 })
 
+
+// Запоминаем размер окна
+const handleGetDim = (e) => {
+  const width = e.target.outerWidth
+  localStorage.setItem('width', width)
+}
+
+window.addEventListener('resize', handleGetDim)
+
+// Проверяем размер окна при загрузки
+if (localStorage.getItem('width') && Number(localStorage.getItem('width')) >= 340) {
+  ipcRenderer.send('resize', localStorage.getItem('width'))
+}
+
 // function listenOnDevicePixelRatio() {
 //   function onChange() {
 //     console.log("devicePixelRatio changed: " + window.devicePixelRatio);
