@@ -6,7 +6,6 @@ import size from './modules/change-size'
 import resize from './modules/change-resize'
 import tray from './modules/tray'
 import autoLoad from './modules/autoload'
-import createWindow from './window'
 
 const appTodo = () => {
 	let window = null
@@ -79,7 +78,9 @@ const appTodo = () => {
 			size(window) 
 
 			// Переключаем размер окна
+			if (process.platform !== 'darwin') {
 			resize(window)	
+			}
 
 			// Меняем название программы в уведомлении	
 			name() 
