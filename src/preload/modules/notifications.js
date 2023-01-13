@@ -1,16 +1,21 @@
+
+
 const notifications = () => {
+	const icon = 'img/icon.png'
 
 // Уведомление о том что есть интернет
 window.addEventListener('online', () => {
 	new Notification('Онлайн', {
 			body: 'Приложение онлайн',
+			icon: icon
 		})
  })
 
  // Уведомление о том что проблемы с интернетом
  window.addEventListener('offline', () => {
 	 new Notification('Офлайн', {
-		 body: 'Проверьте соединение с интернетом'
+		 body: 'Проверьте соединение с интернетом',
+		 icon: icon
 	 })
  })
 
@@ -20,7 +25,8 @@ window.addEventListener('online', () => {
  // Уведомление об открытых задачах
  if (Number(openTask) > 0) {
 	new Notification('С возвращением!', { 
-		body: `Открытых задач на сегодня - ${openTask} шт.` 
+		body: `Открытых задач на сегодня - ${openTask} шт.`,
+		icon: icon
 	})
  }
 
