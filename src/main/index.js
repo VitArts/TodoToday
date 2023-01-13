@@ -1,5 +1,5 @@
-import { checkForUpdates } from './updater'
-import { appTodo } from './app'
+import checkForUpdates from './updater'
+import appTodo from './app'
 
 // Проверка обновлений
 setTimeout(() => {

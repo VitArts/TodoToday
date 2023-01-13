@@ -2,12 +2,12 @@
   "name": "TodoToday",
   "version": "0.2.4",
   "description": "TodoToday - список задач на день!",
-  "author": {
-    "name": "VitArts.ru",
-    "email": "vitarts@ya.ru"
-  },
+  "author": "VitArts.ru <vitarts@ya.ru>",
   "homepage": "https://todotoday.ru/",
-  "repository": "https://github.com/VitArts/TodoToday",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitArts/TodoToday.git"
+  },
   "dependencies": {
     "electron-log": "^4.4.8",
     "electron-updater": "^5.0.5"
@@ -50,5 +50,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": []
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/VitArts/TodoToday/issues"
+  }
 }

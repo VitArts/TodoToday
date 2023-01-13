@@ -4,11 +4,9 @@ import { dialog, BrowserWindow } from 'electron'
 // logs
 autoUpdater.logger = require("electron-log")
 autoUpdater.logger.transports.file.level = "info"
-
 autoUpdater.autoDownload = false
 
-
-export const checkForUpdates = () => {
+const checkForUpdates = () => {
 	// Проверка обновлений на гитхабе
 	autoUpdater.checkForUpdatesAndNotify()
 	autoUpdater.on('update-available', () => {
@@ -38,3 +36,5 @@ export const checkForUpdates = () => {
 		})
 	})
 }
+
+export default checkForUpdates
