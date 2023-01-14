@@ -5,8 +5,9 @@ import iconLarge from 'icon.png'
 
 const tray = (window) => {
 	let aboutModal  = {
-		buttons: ["Хорошо"],
+		//buttons: ["Хорошо"],
 		type: 'info',
+		normalizeAccessKeys: true,
 		icon: path.resolve(__dirname, iconLarge),
 		title: "О программе",
 		detail: `Версия - ${app.getVersion()}
@@ -33,17 +34,17 @@ const tray = (window) => {
 	}])
 
 	// Иконка для трея
-	const tray = new Tray(path.resolve(__dirname, icon))
+	const trayOn = new Tray(path.resolve(__dirname, icon))
 
 	// Добавляем меню и название
-	tray.setToolTip(app.getName())
-	tray.setContextMenu(trayMenu)
-	tray.setIgnoreDoubleClickEvents(true)
+	trayOn.setToolTip(app.getName())
+	trayOn.setContextMenu(trayMenu)
+	trayOn.setIgnoreDoubleClickEvents(true)
 
-	// Повторный запуск
-	tray.on('click', function(){
-	window.isVisible() ? window.hide() : window.show()
-	})
+	// Повторный запуск - НЕ РАБОТАЕТ
+	// trayOn.on('click', () => {
+	// 	window.isVisible() ? window.hide() : window.show()
+	// })
 }
 
 export default tray
