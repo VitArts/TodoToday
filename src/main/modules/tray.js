@@ -1,4 +1,4 @@
-import { app, Tray,	Menu, dialog } from 'electron'
+import { app, Tray,	Menu, dialog, BrowserWindow } from 'electron'
 import path from 'path'
 import icon from 'trayTemplate.png'
 import iconLarge from 'icon.png'
@@ -27,6 +27,7 @@ const tray = (window) => {
 		label: 'О программе',
 		click: () => {
 			windowAbout(window) 
+		//	console.log(BrowserWindow.fromId(2))
 		//	dialog.showMessageBox(window, aboutModal)
 		}
 	}, {
