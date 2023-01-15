@@ -2,6 +2,7 @@ import { app, Tray,	Menu, dialog } from 'electron'
 import path from 'path'
 import icon from 'trayTemplate.png'
 import iconLarge from 'icon.png'
+import windowAbout from './window-about'
 
 const tray = (window) => {
 	let aboutModal  = {
@@ -16,6 +17,7 @@ const tray = (window) => {
 		message: app.getName()
 	 }
 
+
 	const trayMenu = Menu.buildFromTemplate([{
 		label: 'Показать / Скрыть',
 		click: () => {
@@ -24,7 +26,8 @@ const tray = (window) => {
 	}, {
 		label: 'О программе',
 		click: () => {
-			dialog.showMessageBox(window, aboutModal)
+			windowAbout(window) 
+		//	dialog.showMessageBox(window, aboutModal)
 		}
 	}, {
 		label: 'Выход',
