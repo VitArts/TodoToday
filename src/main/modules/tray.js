@@ -5,18 +5,20 @@ import iconLarge from 'icon.png'
 import windowAbout from './window-about'
 
 const tray = (window) => {
-	let aboutModal  = {
-		//buttons: ["Хорошо"],
-		type: 'info',
-		normalizeAccessKeys: true,
-		icon: path.resolve(__dirname, iconLarge),
-		title: "О программе",
-		detail: `Версия - ${app.getVersion()}
-		Веб версия - ${app.getName()}.ru
-		Разработка - VitArts.ru`,
-		message: app.getName()
-	 }
+	// let aboutModal  = {
+	// 	//buttons: ["Хорошо"],
+	// 	type: 'info',
+	// 	normalizeAccessKeys: true,
+	// 	icon: path.resolve(__dirname, iconLarge),
+	// 	title: "О программе",
+	// 	detail: `Версия - ${app.getVersion()}
+	// 	Веб версия - ${app.getName()}.ru
+	// 	Разработка - VitArts.ru`,
+	// 	message: app.getName()
+	//  }
 
+	 // создаем окно о программе
+	 windowAbout(window) 
 
 	const trayMenu = Menu.buildFromTemplate([{
 		label: 'Показать / Скрыть',
@@ -26,9 +28,14 @@ const tray = (window) => {
 	}, {
 		label: 'О программе',
 		click: () => {
-			windowAbout(window) 
-		//	console.log(BrowserWindow.fromId(2))
-		//	dialog.showMessageBox(window, aboutModal)
+			let windows = BrowserWindow.getAllWindows()
+					windows.forEach(window => {
+						if (window.getTitle() === 'О программе') {
+							if (!window.isVisible()) {
+								window.show()
+							}
+						}
+			}) 
 		}
 	}, {
 		label: 'Выход',
