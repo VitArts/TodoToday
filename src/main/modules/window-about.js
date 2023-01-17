@@ -26,15 +26,22 @@ const windowAbout = (window) => {
 	//console.log(about.id)
 	//BrowserWindow.fromId(id)
 
-	//about.webContents.openDevTools() 
-	about.loadFile('renderer/about.html')
+	const nameFile = 'about'
+
+	about.webContents.openDevTools() 
+	about.loadFile(`renderer/${nameFile}.html`)
 
 	about.webContents.on('did-finish-load', () => {
 		about.webContents.send('version', app.getVersion())
 		about.webContents.send('name', app.getName())
 	})
 
-	theme(about, 'setBackgroundColor')
+	// Переключаем тему
+	theme(about)
+
+	ipcMain.on('color', (_, data) => {
+			about.webContents.send('color', data);
+	})
 
 	ipcMain.on('quit', (_, data) => {
 			about.hide()
@@ -44,6 +51,7 @@ const windowAbout = (window) => {
 		e.preventDefault()
     about.hide()
   });
+	
 	
 }
 

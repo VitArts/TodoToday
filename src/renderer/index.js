@@ -1,4 +1,5 @@
 import { ipcRenderer, shell } from 'electron'
+require('./about.css')
 
 window.onload = () => {
 	const button = document.querySelector('.about button')
@@ -30,6 +31,11 @@ window.onload = () => {
 			body.style.color = '#fff'
 	 }
 	})
+
+	ipcRenderer.on('color', (_, date) => {
+		body.className = ''
+		body.classList.add(date)
+	 })
 
 	links.forEach((link) => link.addEventListener('click', (e) => {
 		e.preventDefault()

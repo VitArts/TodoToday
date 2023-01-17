@@ -5,6 +5,7 @@ import safeResize from './modules/safe-resize'
 import sendToggle from './modules/send-toggle'
 import darkMode from './modules/dark-mode'
 import notifications from './modules/notifications'
+import colorMode from './modules/color-mode'
 
 window.onload = () => {
   // Уведомления
@@ -27,6 +28,9 @@ window.onload = () => {
 
   // Проверяем размер окна при загрузки
   sendResize()
+
+  // Цветовое оформление
+  colorMode()
 
 // function listenOnDevicePixelRatio() {
 //   function onChange() {
