@@ -1,4 +1,4 @@
-import { app, BrowserWindow, session } from 'electron'
+import { app, BrowserWindow, session, ipcMain } from 'electron'
 import path from 'path'
 import theme from './modules/change-theme'
 import name from './modules/change-name'
@@ -6,6 +6,7 @@ import size from './modules/change-size'
 import resize from './modules/change-resize'
 import tray from './modules/tray'
 import autoLoad from './modules/autoload'
+import alwaysOnTop from './modules/change-alwaysontop'
 
 const appTodo = () => {
 	let window = null
@@ -65,8 +66,8 @@ const appTodo = () => {
 			// Загрузка из вне
 			window.loadURL('https://todotoday.ru/')
 
-		// Консоль
-			//window.webContents.openDevTools() 
+		  // Консоль
+			window.webContents.openDevTools() 
 			window.on('ready-to-show', () => {
 				window.show()
 			})
@@ -76,6 +77,9 @@ const appTodo = () => {
 				
 			// Переключаем масштаб
 			size(window) 
+
+			// Переключаем режим поверх экрана
+			alwaysOnTop(window)
 
 			// Переключаем размер окна
 			if (process.platform !== 'darwin') {

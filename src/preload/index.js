@@ -6,6 +6,7 @@ import sendToggle from './modules/send-toggle'
 import darkMode from './modules/dark-mode'
 import notifications from './modules/notifications'
 import colorMode from './modules/color-mode'
+import alwaysOnTop from './modules/send-alwaysOnTop'
 
 window.onload = () => {
   // Уведомления
@@ -31,6 +32,9 @@ window.onload = () => {
 
   // Цветовое оформление
   colorMode()
+
+  // Переключатель настройки - поверх экрана
+  alwaysOnTop()
 
 // function listenOnDevicePixelRatio() {
 //   function onChange() {

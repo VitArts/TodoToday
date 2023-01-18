@@ -1,7 +1,9 @@
+import config from './change-config'
+
 const safeResize = () => {
 	const handleGetDim = (e) => {
 		const width = e.target.outerWidth
-		localStorage.setItem('width', width)
+		config('width', width)
 	}
 	
 	window.addEventListener('resize', handleGetDim)

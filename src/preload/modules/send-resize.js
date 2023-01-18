@@ -1,8 +1,9 @@
 import { ipcRenderer } from 'electron'
+import getConfig from './get-config'
 
 const sendResize = () => {
-	if (localStorage.getItem('width') && Number(localStorage.getItem('width')) >= 340) {
-		ipcRenderer.send('resize', localStorage.getItem('width'))
+	if (getConfig('width') && Number(getConfig('width')) >= 340) {
+		ipcRenderer.send('resize', getConfig('width'))
 	}
 }
 
