@@ -1,6 +1,15 @@
+const CopyPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   renderer: {
-    entry: './src/renderer/index.js'
+    entry: './src/renderer/index.js',
+    plugins: [
+      new CopyPlugin({
+        patterns: [
+          { from: './src/renderer/**/*.html', to: '[name]/[name][ext]' },
+        ],
+      }),
+    ]
   },
   preload: {
     entry: './src/preload/index.js'
@@ -20,6 +29,5 @@ module.exports = {
         ],
       },]
     }
-
   }
 }

@@ -1,5 +1,6 @@
 import {app, BrowserWindow, ipcMain,  } from 'electron'
 import theme from './change-theme'
+import path from 'path'
 
 const windowAbout = (window) => {
 	let about = null
@@ -23,13 +24,8 @@ const windowAbout = (window) => {
 		}
 	})
 
-	//console.log(about.id)
-	//BrowserWindow.fromId(id)
-
-	const nameFile = 'about'
-
-	about.webContents.openDevTools() 
-	about.loadFile(`renderer/${nameFile}.html`)
+	//about.webContents.openDevTools() 
+	about.loadFile(`renderer/about/about.html`)
 
 	about.webContents.on('did-finish-load', () => {
 		about.webContents.send('version', app.getVersion())
