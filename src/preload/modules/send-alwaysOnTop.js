@@ -12,15 +12,17 @@ const alwayOnTop = () => {
 														<p>Закрепить окно поверх экрана</p></div>	</div>
 													<div class="button-param"> 
 														<div class="custom-control scale-switch ios-switch">
-														<input type="checkbox" class="ios-input" id="switch-color-list">
-														<label class="custom-control-label" for="switch-color-list"></label>
+														<input type="checkbox" class="ios-input" id="switch-always">
+														<label class="custom-control-label" for="switch-always"></label>
 														</div>
 													</div>`
 
 	const contentParam = document.querySelector('.content .param')
 				contentParam.after(param)
 
-	const alwaysDiv = document.querySelector('.param .ios-input')
+	const alwaysDiv = param.querySelector('#switch-always')
+
+console.log(alwaysDiv)
 
 	// Первоначальные настройки при загрузке
 	if (getConfig('alwaysOnTop') === undefined) {

@@ -5,10 +5,9 @@ const sendToggle = () => {
 	const toggleSize = document.querySelector('.toggle-size')
 
 	toggleSize.addEventListener('change', () => {
-		ipcRenderer.send('size', document.querySelector('.toggle-size').value)
+		ipcRenderer.send('size', toggleSize.value)
 		changeTitleBar()
 	})
-
 }
 
 export default sendToggle
