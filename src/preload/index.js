@@ -7,6 +7,7 @@ import darkMode from './modules/dark-mode'
 import notifications from './modules/notifications'
 import colorMode from './modules/color-mode'
 import alwaysOnTop from './modules/send-alwaysOnTop'
+import autoLoad from './modules/autoLoad'
 
 window.onload = () => {
   // Уведомления
@@ -35,6 +36,9 @@ window.onload = () => {
 
   // Переключатель настройки - поверх экрана
   alwaysOnTop()
+
+  // Автозагрузка приложения
+  autoLoad()
 
 // function listenOnDevicePixelRatio() {
 //   function onChange() {

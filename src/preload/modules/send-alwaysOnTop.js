@@ -22,8 +22,6 @@ const alwayOnTop = () => {
 
 	const alwaysDiv = param.querySelector('#switch-always')
 
-console.log(alwaysDiv)
-
 	// Первоначальные настройки при загрузке
 	if (getConfig('alwaysOnTop') === undefined) {
 		config('alwaysOnTop', true)

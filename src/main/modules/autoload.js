@@ -1,8 +1,17 @@
 import { app } from 'electron'
+import { ipcMain } from 'electron'
 
 const autoLoad = () => {
-	app.setLoginItemSettings({
-		openAtLogin: true,
+	ipcMain.on('autoLoad', (_, data) => {
+		if (data) {
+			app.setLoginItemSettings({
+				openAtLogin: true,
+			})
+		} else {
+			app.setLoginItemSettings({
+				openAtLogin: false,
+			})
+		}
 	})
 }
 
