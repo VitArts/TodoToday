@@ -105,9 +105,7 @@ const appTodo = () => {
 
 	 // Если не мак то закрыть приложение на крестик
 	 app.on('window-all-closed', () => {
-		if (process.platform !== 'darwin') {
 			 app.quit();
-		}
  	});
 
 		})
